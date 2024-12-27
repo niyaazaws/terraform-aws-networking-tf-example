@@ -5,6 +5,7 @@ NOTE: everytime you create a variable you must create the corresponding resource
 */
 
 variable "vpc_config" {
+  description = "contains the VPC configuration and the. more specifically the required cidr_block and the vpc name"
   type = object({
     cidr_block = string
     name       = string
@@ -24,6 +25,14 @@ mapping the object allows user to create mulitples; in this case multiple subnet
 NOTE: everytime you create a variable you must create the corresponding resource/module
 */
 variable "subnet_config" {
+  description = <<EOT
+  Accepts a map of the subnet configurations each subnet configuration should contain
+
+  cidr_block : the cidr of the subnet
+  public : whether the subnet should be public or not
+  az : the az where to deploy the subnet
+
+  EOT
   type = map(object({
     cidr_block = string
     az         = string
