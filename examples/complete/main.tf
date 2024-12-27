@@ -1,18 +1,10 @@
-# terraform-aws-networking-tf-example
-Networking module created during Niyaaz Adonis Terraform pursuit
-
-
-This module manages the creation of VPCs and subnets , allowing for both public and private
-
-Example usage:
-'''
 module "vpc" {
   source = "./modules/networking"
   vpc_config = {
     cidr_block = "10.0.0.0/16"
-    name       = "your_vpc"
+    name       = "13-local-modules"
   }
-  #because subnet config is map we can create multiple subnets
+  #public subnets are indicate by marking public to true
   subnet_config = {
     subnet_1 = {
       cidr_block = "10.0.0.0/24"
@@ -34,5 +26,3 @@ module "vpc" {
     }
   }
 }
-'''
-
